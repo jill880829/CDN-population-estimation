@@ -7,7 +7,7 @@ client = MongoClient('localhost:25555')
 db = client.Twitch
 serverStatusResult = db.command('serverStatus')
 
-print("sampling time: "+argv[2]+"-"+argv[3])
+print("sampling time: "+argv[1]+"-"+argv[2])
 
 # baseline
 date = ["05-07", "05-08", "05-09", "05-10", "05-11", "05-12", "05-13", "05-14", "05-15", "05-16"]
@@ -28,11 +28,11 @@ print(server_num_each_day)
 # sampling
 whole_sample = []
 for i, d in enumerate(date):
-    streams = db.United_States.find({ "start": { "$lte": "2021-"+d+"T"+argv[3] }, "end": { "$gte": "2021-"+d+"T"+argv[2] }})
+    streams = db.United_States.find({ "start": { "$lte": "2021-"+d+"T"+argv[2] }, "end": { "$gte": "2021-"+d+"T"+argv[1] }})
     cur_ip_list = list()
     for s in streams:
         for (tm, ip) in s["transactionList"].items():
-            if tm >= "2021-"+d+"T"+argv[2] and tm <= "2021-"+d+"T"+argv[3]:
+            if tm >= "2021-"+d+"T"+argv[1] and tm <= "2021-"+d+"T"+argv[2]:
                 if ip not in cur_ip_list:
                     cur_ip_list.append(ip)
     whole_sample.append(len(cur_ip_list))
@@ -41,7 +41,7 @@ for i, d in enumerate(date):
 # reading capturing probability
 capturing_p = np.zeros((len(date)-1),)
 cp_before_sort = []
-with open(argv[1], 'r') as f:
+with open('out.txt', 'r') as f:
     check = 0
     for line in f:
         if check == 0 and line == "$p\n":

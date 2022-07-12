@@ -225,4 +225,4 @@ ax.set_xticklabels(x_axis)
 ax.legend()
 
 fig.tight_layout()
-plt.savefig(argv[3])
+plt.savefig(argv[3]+'converge_period.png')

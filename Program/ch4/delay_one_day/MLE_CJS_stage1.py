@@ -15,6 +15,7 @@ for s in streams:
         if ip not in ip_list:
             ip_list.append(ip)
 
+# sampling and transforming input data format
 date = ["05-07", "05-08", "05-09", "05-10", "05-11", "05-12", "05-13", "05-14", "05-15", "05-16"]
 ip_dict = dict.fromkeys(ip_list, "")
 for i, d in enumerate(date):

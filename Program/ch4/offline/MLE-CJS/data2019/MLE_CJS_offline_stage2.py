@@ -66,8 +66,8 @@ print(server_num_each_day)
 # sampling
 whole_sample = []
 for i, d in enumerate(date):
-    st = f'2019-{d}T{argv[2]}Z' 
-    et = f'2019-{d}T{argv[3]}Z'
+    st = f'2019-{d}T{argv[1]}Z' 
+    et = f'2019-{d}T{argv[2]}Z'
     q = build_query(st, et, loc='west-us', lang=None)
     result = client.query(q)
     server_set, _ = get_edge_num(result)
@@ -78,7 +78,7 @@ for i, d in enumerate(date):
 # reading capturing probability
 capturing_p = np.zeros((len(date)-1),)
 cp_before_sort = []
-with open(argv[1], 'r') as f:
+with open('out.txt', 'r') as f:
     check = 0
     for line in f:
         if check == 0 and line == "$p\n":

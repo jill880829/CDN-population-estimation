@@ -18,11 +18,11 @@ for s in streams:
 # sampling and transforming input data format
 ip_dict = dict.fromkeys(ip_list, "")
 for d in date:
-    streams = db.United_States.find({ "start": { "$lte": "2021-"+d+"T"+argv[3] }, "end": { "$gte": "2021-"+d+"T"+argv[2] }})
+    streams = db.United_States.find({ "start": { "$lte": "2021-"+d+"T"+argv[2] }, "end": { "$gte": "2021-"+d+"T"+argv[1] }})
     cur_ip_list = list()
     for s in streams:
         for (tm, ip) in s["transactionList"].items():
-            if tm >= "2021-"+d+"T"+argv[2] and tm <= "2021-"+d+"T"+argv[3]:
+            if tm >= "2021-"+d+"T"+argv[1] and tm <= "2021-"+d+"T"+argv[2]:
                 if ip not in cur_ip_list:
                     cur_ip_list.append(ip)
     for ip in ip_list:
@@ -38,6 +38,6 @@ for (ip, ch) in ip_and_ch:
         continue
     ip_ch_rec.append(ch)
 
-with open(argv[1], 'w') as f:
+with open('tmp.txt', 'w') as f:
     for ch in ip_ch_rec:
         f.writelines(ch+'\n')

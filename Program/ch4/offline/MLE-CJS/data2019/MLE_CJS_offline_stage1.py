@@ -60,8 +60,8 @@ date = ["10-28", "10-29", "10-30", "10-31", "11-01", "11-02", "11-03", "11-04", 
 # sampling and transforming input data format
 ip_dict = dict.fromkeys(ip_list, "")
 for d in date:
-    st = f'2019-{d}T{argv[2]}Z' 
-    et = f'2019-{d}T{argv[3]}Z'
+    st = f'2019-{d}T{argv[1]}Z' 
+    et = f'2019-{d}T{argv[2]}Z'
     q = build_query(st, et, loc='west-us', lang=None)
     result = client.query(q)
     server_set, _ = get_edge_num(result)
@@ -79,6 +79,6 @@ for (ip, ch) in ip_and_ch:
         continue
     ip_ch_rec.append(ch)
 
-with open(argv[1], 'w') as f:
+with open('tmp.txt', 'w') as f:
     for ch in ip_ch_rec:
         f.writelines(ch+'\n')
