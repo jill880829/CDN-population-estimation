@@ -14,30 +14,28 @@ DT <- data.frame("ch" = ch, "cluster" = cluster)
 DT$ch <- as.character(DT$ch)
 
 start_time <- Sys.time()
-# if( args[3] == "1") {
-#     DT.proc <- process.data(DT, groups="cluster")
-# } else if (args[3] == "2") {
-#     DT.proc <- process.data(DT, groups="cluster", time.intervals = c(2,2,2,2,2,2,1,1,2,2))
-# } else if (args[3] == "3") {
-#     DT.proc <- process.data(DT, groups="cluster", time.intervals = c(3,3,3,3,3,3,1,1,1,3,3))
-# } else if (args[3] == "4") {
-#     DT.proc <- process.data(DT, groups="cluster", time.intervals = c(4,4,4,4,4,4,1,1,1,1,4,4))
-# }
-DT.proc <- process.data(DT, groups="cluster")
+if( args[3] == "1") {
+    DT.proc <- process.data(DT, groups="cluster")
+} else if (args[3] == "2") {
+    DT.proc <- process.data(DT, groups="cluster", time.intervals = c(2,2,2,2,2,2,1,1,2,2))
+} else if (args[3] == "3") {
+    DT.proc <- process.data(DT, groups="cluster", time.intervals = c(3,3,3,3,3,3,1,1,1,3,3))
+} else if (args[3] == "4") {
+    DT.proc <- process.data(DT, groups="cluster", time.intervals = c(4,4,4,4,4,4,1,1,1,1,4,4))
+}
 DT.ddl <- make.design.data(DT.proc)
 
 Phi.cluster.time <- list(formula=~cluster*time)
 p.cluster.time <- list(formula=~cluster*time)
-# if( args[3] == "1") {
-#     cjs.m2 <- crm(DT.proc, DT.ddl, model.parameters = list(Phi = Phi.cluster.time, p = p.cluster.time), accumulate = FALSE)
-# } else if (args[3] == "2") {
-#     cjs.m2 <- crm(DT.proc, DT.ddl, model.parameters = list(Phi = Phi.cluster.time, p = p.cluster.time), accumulate = FALSE, time.intervals = c(2,2,2,2,2,2,1,1,2,2))
-# } else if (args[3] == "3") {
-#     cjs.m2 <- crm(DT.proc, DT.ddl, model.parameters = list(Phi = Phi.cluster.time, p = p.cluster.time), accumulate = FALSE, time.intervals = c(3,3,3,3,3,3,1,1,1,3,3))
-# } else if (args[3] == "4") {
-#     cjs.m2 <- crm(DT.proc, DT.ddl, model.parameters = list(Phi = Phi.cluster.time, p = p.cluster.time), accumulate = FALSE, time.intervals = c(4,4,4,4,4,4,1,1,1,1,4,4))
-# }
-cjs.m2 <- crm(DT.proc, DT.ddl, model.parameters = list(Phi = Phi.cluster.time, p = p.cluster.time), accumulate = FALSE)
+if( args[3] == "1") {
+    cjs.m2 <- crm(DT.proc, DT.ddl, model.parameters = list(Phi = Phi.cluster.time, p = p.cluster.time), accumulate = FALSE)
+} else if (args[3] == "2") {
+    cjs.m2 <- crm(DT.proc, DT.ddl, model.parameters = list(Phi = Phi.cluster.time, p = p.cluster.time), accumulate = FALSE, time.intervals = c(2,2,2,2,2,2,1,1,2,2))
+} else if (args[3] == "3") {
+    cjs.m2 <- crm(DT.proc, DT.ddl, model.parameters = list(Phi = Phi.cluster.time, p = p.cluster.time), accumulate = FALSE, time.intervals = c(3,3,3,3,3,3,1,1,1,3,3))
+} else if (args[3] == "4") {
+    cjs.m2 <- crm(DT.proc, DT.ddl, model.parameters = list(Phi = Phi.cluster.time, p = p.cluster.time), accumulate = FALSE, time.intervals = c(4,4,4,4,4,4,1,1,1,1,4,4))
+}
 cjs.m2 <- cjs.hessian(cjs.m2)
 print(predict(cjs.m2))
 

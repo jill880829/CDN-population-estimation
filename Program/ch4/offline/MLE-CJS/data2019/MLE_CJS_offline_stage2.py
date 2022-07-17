@@ -47,7 +47,7 @@ def get_edge_list(result):
             record.append(edges)
     return record
 
-print("sampling time: "+argv[2]+"-"+argv[3])
+print("sampling time: "+argv[1]+"-"+argv[2])
 
 date = ["10-28", "10-29", "10-30", "10-31", "11-01", "11-02", "11-03", "11-04", "11-05", "11-06", "11-07", "11-08", "11-09", "11-10"]
 server_num_each_day = []
