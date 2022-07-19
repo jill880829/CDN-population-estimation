@@ -7,6 +7,10 @@ Nevertheless, the assumptions of the traditional CJS model are still restrictive
 
 This README aims to guide users to set up the environment and run the programs and the scripts. Further information for this study can be found in the Thesis directory.
 
+## Complete Video Demonstration
+Part 1 link: https://youtu.be/6ITD748sRbI
+Part 2 Link: https://youtu.be/DnXG1b1qOQg
+
 ## Environment Setup
 1. Connect to the server with IP "140.112.42.161" through SSH since the 2021 data set is only opened to this server in NSLab.
 2. Clone the github repo.
