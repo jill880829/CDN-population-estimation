@@ -9,6 +9,7 @@ This README aims to guide users to set up the environment and run the programs a
 
 ## Complete Video Demonstration
 Part 1 link: https://youtu.be/6ITD748sRbI
+
 Part 2 Link: https://youtu.be/DnXG1b1qOQg
 
 ## Environment Setup
@@ -195,7 +196,9 @@ Rscript ../../CJS_without_heterogeneity.R tmp.txt > out.txt 2> err.txt
 ```
 The parameter numbers of the model is printed in err.txt.
 ![](https://i.imgur.com/3pIQUTH.png)
+
 The computation time is printed in out.txt.
+
 ![](https://i.imgur.com/kAIan7P.png)
 
 Similar operations can be done in the clustering-based estimation with a variety numbers of server groups. With these information, we are able to generate the figure "computation_time" in Result/ch5/discussion.
